@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/3.26/esri/css/esri.css">
+    <script src="https://js.arcgis.com/3.26/"></script>
+
+</head>
+<body class="claro">
+    <!--Div that hosts the Map-->
+    <div id="map"></div>
+</body>
+<script>
+    var map;
+    //Add map modules
+    require(["esri/map", "dojo/domReady!"], function (Map) {
+
+        //Define map properties which includes basemap
+        map = new Map("map", {
+            basemap: "topo",
+            center: [-122.45, 37.75],
+            zoom: 13
+        });
+    });
+</script>
+</html>
