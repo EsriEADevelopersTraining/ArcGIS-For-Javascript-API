@@ -1,1 +1,1 @@
-# ArcGIS-For-Javascript-API
+# ArcGIS-For-Javascript-API Training Codes
