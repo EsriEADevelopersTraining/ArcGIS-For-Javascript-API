@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>Introduction</title>
+    <!--Reference libraries -->
+    <link rel="stylesheet" href="https://js.arcgis.com/3.26/esri/css/esri.css">
+    <script src="https://js.arcgis.com/3.26/"></script>
+
+    <style>
+        html,
+        body,
+        #map {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        //Load Modules
+        require(["esri/map", "esri/dijit/Legend", "esri/layers/FeatureLayer", "dojo/domReady!"], function (Map, Legend, FeatureLayer) {
+            //Adding map to the <div id="map">
+            var map = new Map("map", {
+                basemap: "hybrid",
+                center: [-82.44109, 35.6122],
+                zoom: 17
+            });
+            /****************************************************************
+             * Add feature layer - A FeatureLayer at minimum should point
+             * to a URL to a feature service or point to a feature collection 
+             * object.
+             ***************************************************************/
+            // Carbon storage of trees in Warren Wilson College.
+            var featureLayer = new FeatureLayer("https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Landscape_Trees/FeatureServer/0");
+            map.addLayer(featureLayer);
+
+            //Adding a filter expression to the feature layer
+            featureLayer.setDefinitionExpression("Tree_ID='103'");
+
+            //add the legend to map
+            var legendDijit = new Legend({
+                map: map
+            }, "legendDiv");
+
+            legendDijit.startup();
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="legendDiv"></div>
+    <div id="map"></div>
+</body>
+
+</html>
